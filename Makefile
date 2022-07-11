@@ -41,7 +41,7 @@ make_build: venv venv.tar.gz
 
 	cp -R ./complex_rest_id_generator make_build
 	cp ./docs/id_generator.conf.example make_build/complex_rest_id_generator
-	rm make_build/complex_rest_id_generator/id_generator.conf
+	rm -f make_build/complex_rest_id_generator/id_generator.conf
 	rm -rf make_build/complex_rest_id_generator/venv
 	mv make_build/complex_rest_id_generator/id_generator.conf.example make_build/complex_rest_id_generator/id_generator.conf
 	cp *.md make_build/complex_rest_id_generator/
