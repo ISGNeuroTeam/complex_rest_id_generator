@@ -133,3 +133,6 @@ dmypy.json
 
 *.conf
 *.json
+
+make_build
+*.tar.gz

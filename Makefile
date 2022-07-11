@@ -40,7 +40,9 @@ make_build: venv venv.tar.gz
 	mkdir make_build
 
 	cp -R ./complex_rest_id_generator make_build
+	cp ./docs/id_generator.conf.example make_build/complex_rest_id_generator
 	rm make_build/complex_rest_id_generator/id_generator.conf
+	rm -rf make_build/complex_rest_id_generator/venv
 	mv make_build/complex_rest_id_generator/id_generator.conf.example make_build/complex_rest_id_generator/id_generator.conf
 	cp *.md make_build/complex_rest_id_generator/
 	cp *.py make_build/complex_rest_id_generator/
