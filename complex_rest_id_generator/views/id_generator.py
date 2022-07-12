@@ -2,7 +2,7 @@ from rest.views import APIView
 from rest.response import status, SuccessResponse, ErrorResponse, Response
 from rest.permissions import AllowAny
 import logging
-from utils.unique_id_generator import UniqueIdGenerator
+from ..utils.unique_id_generator import UniqueIdGenerator
 
 logger = logging.getLogger('dtcd_utils')
 
