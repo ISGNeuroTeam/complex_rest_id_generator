@@ -5,11 +5,11 @@ CREATE ROLE id_generator LOGIN PASSWORD 'password';
 EOF
 
 sudo -u postgres psql << EOF
-CREATE DATABASE id_generator_sequence
+CREATE DATABASE id_generator;
 EOF
 
 sudo -u postgres psql << EOF
-grant all privileges on database id_generator_sequence to id_generator;
+grant all privileges on database id_generator to id_generator;
 EOF
 
 

@@ -18,6 +18,8 @@ Deploy [complex rest](https://github.com/ISGNeuroTeam/complex_rest/tree/develop)
 ### Installing
 
 * Make symlink for ./id_generator/id_generator in plugins directory
+* ./create_db.sh if you want to use database dependent ids such as sequence 
+* You can configure your own database but don't forget to add it into id_generator.conf
 * Run complex rest server
 
 ## Running the tests

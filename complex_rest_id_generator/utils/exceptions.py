@@ -22,6 +22,12 @@ class UnknownIdType(Exception):
         super().__init__(f'Unknown id type: {id_type}')
 
 
+class DatabaseConnectionRequired(Exception):
+
+    def __init__(self, id_type):
+        super().__init__(f'Database connection required for id type: {id_type}')
+
+
 class AmountNotNumber(Exception):
 
     def __init__(self, amount):

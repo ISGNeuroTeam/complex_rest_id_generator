@@ -12,13 +12,19 @@ class UniqueIdGenerator:
     SUPPORTED_TYPES = {  # get supported types from super_id_generator lib
         k for k in generators.__dict__ if isinstance(generators.__dict__[k], type) and type(generators.__dict__[k])
     }
-    backend = PGBackend(
-        connection=psycopg2.connect(database=DB_INFO['database'],
-                                    host=DB_INFO['host'],
-                                    port=DB_INFO['port'],
-                                    user=DB_INFO['user'],
-                                    password=DB_INFO['password'])
-    )
+    BACKEND_REQUIRED_TYPES = {  # if generator has db attribute it means that backend db is required
+        k for k in SUPPORTED_TYPES if generators.__dict__[k]().db_connection_required
+    }
+    try:
+        backend = PGBackend(
+            connection=psycopg2.connect(database=DB_INFO['database'],
+                                        host=DB_INFO['host'],
+                                        port=DB_INFO['port'],
+                                        user=DB_INFO['user'],
+                                        password=DB_INFO['password'])
+        )
+    except Exception as e:
+        backend = None
 
     @classmethod
     def create_unique_id_generator(cls, qs_args: Dict[str, any]) -> 'UniqueIdGenerator':
@@ -33,7 +39,8 @@ class UniqueIdGenerator:
         id_type = id_type[0]
         if id_type not in cls.SUPPORTED_TYPES:
             raise UnknownIdType(id_type)
-
+        if id_type in cls.BACKEND_REQUIRED_TYPES and not cls.backend:
+            raise DatabaseConnectionRequired(id_type)
         if not realm:
             raise NoRealm
         realm = realm[0]

@@ -6,5 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
-### Added:
+### Added
+- Scripts for creating and dropping db added to build
 - Changelog.md
+
+### Fixed
+- Ids that don't required db connection now work without db connection
+
+### Changed
+- super_id_generator library version 0.2.0 is now used
